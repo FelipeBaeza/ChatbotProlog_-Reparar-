@@ -1,4 +1,4 @@
-consult('tda_option_20637464_BaezaMunoz.pl').
+:- use_module('tda_option_20637464_BaezaMunoz.pl', [option/5, getCode/2]).
 
 
 % Constructor de flow
@@ -32,4 +32,16 @@ listaCodes([], []).
 listaCodes([Option|Rest], [Code|CodeList]) :-
     getCode(Option, Code), % Obtener el código de la opción
     listaCodes(Rest, CodeList).
-%----------------------------------------------------------------------------------
+%---------------------------------------------------------------------------------
+
+%--------------Agregar un elemento a la lista de elementos sin repetir------------
+
+agregarElemento(Elemento, Lista, [Elemento|Lista]).
+
+% Modificador flowaddoption
+flowAddOption(Flow, Option, NewFlow) :-
+    getFlowId(Flow,Id),
+    getFlowMsg(Flow,Msg),
+    getFlowOption(Flow,Options),
+    agregarElemento(Option, Options, NewOptions),
+    flow(Id, Msg, NewOptions, NewFlow).
