@@ -37,3 +37,20 @@ getChatbotWelcomeMessege([_,_,WelcomeMessage,_,_], WelcomeMessage).
 % Dominio: Chatbot.
 % Descripción: Obtiene el identificador del flujo inicial de un chatbot.
 % Meta Primaria: getChatbotStartFlowID/2
+
+% Modificador.
+% Predicado Nombre: chatbotAddFlow
+% Dominio: Chatbot x Flow x NewChatbot
+% Descripción: Agrega un flujo (Flow) a un chatbot (Chatbot) para obtener un nuevo chatbot (NewChatbot).
+% Meta Primaria: chatbotAddFlow/3
+% Meta Secundaria: getChatbotId/2, getChatbotName/2, getChatbotWelcomeMessege/2, getChatbotStartFlowID/2, getChatbotFlows/2, agregarElemento/3.
+
+
+chatbotAddFlow(Chatbot, Flow, NewChatbot):-
+    getChatbotId(Chatbot, ChatbotId),
+    getChatbotName(Chatbot, Name),
+    getChatbotWelcomeMessege(Chatbot, WelcomeMessage),
+    getChatbotStartFlowID(Chatbot, StartFlowID),
+    getChatbotFlows(Chatbot, Flows),
+    agregarElemento(Flow, Flows, NewFlows),
+    chatbot(ChatbotId, Name, WelcomeMessage, StartFlowID, NewFlows, NewChatbot).
