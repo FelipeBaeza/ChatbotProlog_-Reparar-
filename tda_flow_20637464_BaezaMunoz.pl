@@ -88,10 +88,5 @@ flowAddOption(Flow, Option, NewFlow) :-
     agregarElemento(Option, Options, NewOptions),
     flow(Id, Msg, NewOptions, NewFlow).
 
-% Constructor.
-% Predicado Nombre: chatbot
-% Dominio: ChatbotID x Name x WelcomeMessage x StartFlowID x Flows x Chatbot
-% Descripción: Crea un chatbot.
-% Meta Primaria: chatbot/6
-% Meta Secundaria: verificarIdRepetidos/3.
+
 
